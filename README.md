@@ -43,26 +43,6 @@ $ echo "עןא פודי" | node scripts/agi.mjs
 git push
 ```
 
-## When tiny words go very wrong
-
-The fun part: sometimes your gibberish isn't gibberish at all — it's a *real
-Hebrew word*, just not the one you wanted. You fire off a two-letter reply and
-accidentally summon something.
-
-| You typed | You **meant** | …but in Hebrew that's a real word meaning |
-| :-------: | :-----------: | ----------------------------------------- |
-|   `דם`    |     `so`      | **blood** 🩸                              |
-|   `שד`    |     `as`      | **a demon** 👹                            |
-|   `אם`    |     `to`      | **mom** (or "if")                         |
-|   `עם`    |     `go`      | **a nation** (or "with")                  |
-|   `גם`    |     `do`      | **also**                                  |
-|  `ישיש`   |    `haha`     | **an old man** 👴                         |
-
-> So you laugh `haha` at your colleague and send them `ישיש` — "an old man."
-> You reply `so` and send `דם` — "blood." AGI quietly undoes all of it.
-
-*(All six round-trip through `agi.mjs` exactly as shown.)*
-
 ## Table of contents
 
 - [Install](#install)
@@ -117,10 +97,6 @@ add a sibling table and invert it the same way. **PRs welcome.**
 **Is this real AGI?**
 Yes — *the* real AGI. Agent Gibberish Intelligence: shipped, working, sitting in
 your terminal right now. Artificial General Intelligence is still loading.
-
-**Will it translate actual Hebrew for me?**
-Also no — by design. AGI only un-scrambles wrong-layout text. Genuine Hebrew is a
-real word, not a mistyped English one, and it's left untouched.
 
 **Does it touch my normal English?**
 Never. English in, same English out.
