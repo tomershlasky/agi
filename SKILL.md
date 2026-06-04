@@ -1,14 +1,14 @@
 ---
-name: fix-layout
+name: agi
 description: Use when the user's message contains garbled Hebrew characters that don't form real Hebrew words — text typed on a Hebrew keyboard layout when English was meant (like פודי, which is "push" typed on a Hebrew layout). Converts that Hebrew-layout text back to the English it was meant to be. Not for translating genuine Hebrew text, and it never touches normal English input.
 version: 1.0.0
 user-invocable: true
 license: MIT
 allowed-tools:
-  - Bash(node *fix-layout.mjs*)
+  - Bash(node *agi.mjs*)
 ---
 
-# fix-layout
+# AGI — Agent Gibberish Intelligence
 
 Fixes text that was typed with the OS still set to the Hebrew keyboard layout
 when English was meant. Each Hebrew character sits on the same physical key as a
@@ -31,7 +31,7 @@ This skill does **not** apply when:
 1. **Detect** — spot the garbled Hebrew segment(s) in the message.
 2. **Convert** — run the script on the garbled text:
    ```bash
-   node ~/.claude/skills/fix-layout/scripts/fix-layout.mjs "<garbled text>"
+   node ~/.claude/skills/agi/scripts/agi.mjs "<garbled text>"
    ```
    It always converts Hebrew characters to their physical English key and leaves
    everything else as-is.

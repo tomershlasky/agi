@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-// fix-layout — convert text typed on a Hebrew keyboard layout back to the English
-// it was meant to be. Deterministic physical-key remapping (NOT translation).
-// Zero dependencies. One direction only: Hebrew -> English.
-// English (and anything not on the Hebrew table) passes through untouched.
+// AGI — Agent Gibberish Intelligence.
+// Converts text typed on a Hebrew keyboard layout back to the English it was meant
+// to be. Deterministic physical-key remapping (NOT translation). Zero dependencies.
+// One direction only: Hebrew -> English. English (and anything not on the Hebrew
+// table) passes through untouched.
 //
 // Usage:
-//   node fix-layout.mjs "פודי"           -> push
-//   node fix-layout.mjs "פודי איט"        -> push thy   (spaces preserved)
-//   echo "פודי" | node fix-layout.mjs                   (reads stdin if no args)
+//   node agi.mjs "פודי"           -> push
+//   node agi.mjs "פודי איט"        -> push thy   (spaces preserved)
+//   echo "פודי" | node agi.mjs                   (reads stdin if no args)
 
 // Source of truth: physical QWERTY key -> standard Israeli Hebrew character.
 const EN_TO_HE = {
@@ -43,7 +44,7 @@ async function main() {
     text = (await readStdin()).replace(/\n$/, "");
   }
   if (!text) {
-    process.stderr.write('fix-layout: no input.\nUsage: node fix-layout.mjs "<text>"\n');
+    process.stderr.write('agi: no input.\nUsage: node agi.mjs "<text>"\n');
     process.exit(1);
   }
   process.stdout.write(fixLayout(text) + "\n");
