@@ -1,69 +1,127 @@
-# AGI — Agent Gibberish Intelligence
+<div align="center">
 
-> No, not *that* AGI.
+# 🧠 AGI
 
-A [Claude Code](https://claude.com/claude-code) skill that turns keyboard
-gibberish back into what you meant.
+### Agent Gibberish Intelligence
 
-If you've ever started typing before your OS switched languages, you know the
-problem. You meant to type `push` but the layout was still Hebrew, so what came
-out was `פודי`. Each Hebrew letter sits on the same physical key as a Latin
-letter (`p→פ, u→ו, s→ד, h→י`), so the fix is a deterministic one-to-one key
-remapping — **not** translation.
+**Turns keyboard gibberish back into what you actually meant.**
 
-AGI auto-detects that garbled Hebrew in your message and converts it back to the
-English you meant, so Claude can just understand you.
+*No, not* ***that*** *AGI.*
 
+<br>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-2563eb.svg)](LICENSE)
+[![Dependencies](https://img.shields.io/badge/dependencies-0-22c55e.svg)](scripts/agi.mjs)
+[![Built for Claude Code](https://img.shields.io/badge/built%20for-Claude%20Code-d97757.svg)](https://claude.com/claude-code)
+[![Hebrew → English](https://img.shields.io/badge/%D7%A4%D7%95%D7%93%D7%99-push-8b5cf6.svg)](#the-bit)
+[![AGI achieved?](https://img.shields.io/badge/AGI%20achieved-no-lightgrey.svg)](#faq)
+
+</div>
+
+---
+
+## <a name="the-bit"></a>The bit
+
+You start typing before your OS finishes switching keyboards. You meant `push`.
+Your layout was still Hebrew. Out came `פודי`.
+
+```text
+   what you typed        what you meant
+   ─────────────         ──────────────
+       פודי        ──▶        push
 ```
-פודי   →  push
+
+It's not a typo and it's not another language — every Hebrew letter sits on the
+**same physical key** as a Latin one (`p→פ  u→ו  s→ד  h→י`). So the fix isn't
+translation, it's a deterministic key remap. AGI does it automatically, so Claude
+just understands you.
+
+```bash
+$ echo "עןא פודי" | node scripts/agi.mjs
+git push
 ```
 
-It only goes one way — **Hebrew → English**. Normal English input is always left
-exactly as-is.
+## When tiny words go very wrong
 
-## Why a skill (and not just translation)
+The fun part: sometimes your gibberish isn't gibberish at all — it's a *real
+Hebrew word*, just not the one you wanted. You fire off a two-letter reply and
+accidentally summon something.
 
-The text isn't another language — it's the *right* word on the *wrong* keys.
-Translating it makes no sense; remapping the physical keys recovers the exact
-intended characters, every time, with zero guessing.
+| You typed | You **meant** | …but in Hebrew that's a real word meaning |
+| :-------: | :-----------: | ----------------------------------------- |
+|   `דם`    |     `so`      | **blood** 🩸                              |
+|   `שד`    |     `as`      | **a demon** 👹                            |
+|   `אם`    |     `to`      | **mom** (or "if")                         |
+|   `עם`    |     `go`      | **a nation** (or "with")                  |
+|   `גם`    |     `do`      | **also**                                  |
+|  `ישיש`   |    `haha`     | **an old man** 👴                         |
 
-## How it works
+> So you laugh `haha` at your colleague and send them `ישיש` — "an old man."
+> You reply `so` and send `דם` — "blood." AGI quietly undoes all of it.
 
-- A dependency-free Node script (`scripts/agi.mjs`) holds the QWERTY ↔ Hebrew
-  physical-key table and remaps Hebrew characters to the English key they sit on.
-- The skill's `description` tells Claude to invoke it automatically whenever your
-  message has garbled Hebrew — no command to remember.
-- One direction only: Hebrew → English. English, digits, spaces, and punctuation
-  pass through untouched, so running it on already-English text is a no-op.
+*(All six round-trip through `agi.mjs` exactly as shown.)*
+
+## Table of contents
+
+- [Install](#install)
+- [How it works](#how-it-works)
+- [CLI usage](#cli-usage)
+- [Adding another layout](#adding-another-layout)
+- [FAQ](#faq)
+- [License](#license)
 
 ## Install
 
-Copy (or clone) the folder into your Claude Code skills directory:
+It's a [Claude Code](https://claude.com/claude-code) skill. Drop it into your
+skills directory and Claude picks it up automatically:
 
 ```bash
 git clone https://github.com/tomershlasky/agi ~/.claude/skills/agi
 ```
 
-Or for a single project, drop it under `<project>/.claude/skills/agi`.
-That's it — Claude picks it up automatically.
+Per-project instead of global? Put it under `<your-repo>/.claude/skills/agi`.
 
-## Manual CLI usage
+That's the whole install. No build, no dependencies, no config.
 
-You can also run it directly:
+## How it works
+
+- A single dependency-free Node script (`scripts/agi.mjs`) holds the
+  QWERTY ↔ Hebrew physical-key table and remaps each Hebrew character to the
+  English key it sits on.
+- The skill's `description` tells Claude to invoke AGI automatically whenever
+  your message contains garbled Hebrew — nothing to remember, nothing to type.
+- **One direction only: Hebrew → English.** Real English, digits, spaces, and
+  punctuation pass straight through, so running it on normal text is a no-op.
+
+## CLI usage
+
+You can also run it straight from the terminal:
 
 ```bash
-node ~/.claude/skills/agi/scripts/agi.mjs "פודי"        # -> push
-node ~/.claude/skills/agi/scripts/agi.mjs "פודי איט"    # -> push thy
+node ~/.claude/skills/agi/scripts/agi.mjs "פודי"        # → push
+node ~/.claude/skills/agi/scripts/agi.mjs "עןא פודי"    # → git push
 echo "פודי" | node ~/.claude/skills/agi/scripts/agi.mjs  # reads stdin
 ```
 
 ## Adding another layout
 
-The mapping lives in one place: the `EN_TO_HE` table in `scripts/agi.mjs`, with
-the Hebrew→English inverse derived automatically. To support another source
-layout (Russian ЙЦУКЕН, Arabic, etc.), add a sibling table and invert it the same
-way. PRs welcome.
+The mapping lives in exactly one place — the `EN_TO_HE` table in
+`scripts/agi.mjs` — and the Hebrew→English inverse is derived from it
+automatically. To support another source layout (Russian ЙЦУКЕН, Arabic, Greek…),
+add a sibling table and invert it the same way. **PRs welcome.**
+
+## FAQ
+
+**Is this real AGI?**
+No.
+
+**Will it translate actual Hebrew for me?**
+Also no — by design. AGI only un-scrambles wrong-layout text. Genuine Hebrew is a
+real word, not a mistyped English one, and it's left untouched.
+
+**Does it touch my normal English?**
+Never. English in, same English out.
 
 ## License
 
-MIT.
+[MIT](LICENSE) © Tomer Shlasky
