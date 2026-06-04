@@ -2,11 +2,13 @@
 
 # 🧠 AGI
 
-### Agent Gibberish Intelligence
+### The real AGI is finally here.
 
-**Turns keyboard gibberish back into what you actually meant.**
+**Agent Gibberish Intelligence** — turns keyboard gibberish back into what you
+actually meant.
 
-*No, not* ***that*** *AGI.*
+*They spent billions chasing Artificial General Intelligence. We shipped* ***Agent
+Gibberish Intelligence*** *instead. You're welcome.*
 
 <br>
 
@@ -14,7 +16,7 @@
 [![Dependencies](https://img.shields.io/badge/dependencies-0-22c55e.svg)](scripts/agi.mjs)
 [![Built for Claude Code](https://img.shields.io/badge/built%20for-Claude%20Code-d97757.svg)](https://claude.com/claude-code)
 [![Hebrew → English](https://img.shields.io/badge/%D7%A4%D7%95%D7%93%D7%99-push-8b5cf6.svg)](#the-bit)
-[![AGI achieved?](https://img.shields.io/badge/AGI%20achieved-no-lightgrey.svg)](#faq)
+[![AGI achieved](https://img.shields.io/badge/AGI-achieved%20%E2%9C%85-22c55e.svg)](#faq)
 
 </div>
 
@@ -113,7 +115,8 @@ add a sibling table and invert it the same way. **PRs welcome.**
 ## FAQ
 
 **Is this real AGI?**
-No.
+Yes — *the* real AGI. Agent Gibberish Intelligence: shipped, working, sitting in
+your terminal right now. Artificial General Intelligence is still loading.
 
 **Will it translate actual Hebrew for me?**
 Also no — by design. AGI only un-scrambles wrong-layout text. Genuine Hebrew is a
