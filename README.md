@@ -1,106 +1,103 @@
 <div align="center">
 
-# 🧠 AGI
+# AGI
 
-### The real AGI is finally here.
+**Agent Gibberish Intelligence**
 
-**Agent Gibberish Intelligence** — turns keyboard gibberish back into what you
-actually meant.
+*The one that actually shipped.*
 
-*They spent billions chasing Artificial General Intelligence. We shipped* ***Agent
-Gibberish Intelligence*** *instead. You're welcome.*
-
-<br>
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-2563eb.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2563eb.svg)](LICENSE)
 [![Dependencies](https://img.shields.io/badge/dependencies-0-22c55e.svg)](scripts/agi.mjs)
-[![Built for Claude Code](https://img.shields.io/badge/built%20for-Claude%20Code-d97757.svg)](https://claude.com/claude-code)
-[![Hebrew → English](https://img.shields.io/badge/%D7%A4%D7%95%D7%93%D7%99-push-8b5cf6.svg)](#the-bit)
-[![AGI achieved](https://img.shields.io/badge/AGI-achieved%20%E2%9C%85-22c55e.svg)](#faq)
+[![AGI](https://img.shields.io/badge/AGI-achieved%20%E2%9C%85-22c55e.svg)](#how-it-works)
 
 </div>
 
 ---
 
-## <a name="the-bit"></a>The bit
+```text
+you typed:    עןא פודי איק כןרדא םמק
+your agent:   …sorry, I'm not sure what you mean. Could you rephrase?
+with AGI:     git push the first one          ✓  on it.
+```
 
-You start typing before your OS finishes switching keyboards. You meant `push`.
-Your layout was still Hebrew. Out came `פודי`.
+You meant `git push the first one`. Your keyboard was still in Hebrew. So your
+coding agent got `עןא פודי איק כןרדא םמק` — not a typo, a full wall of nonsense —
+and did what agents do: took you seriously, tried anyway, confidently, wrongly.
+
+That's the uniquely modern version of this papercut. A search box just sits there
+looking broken and your eye catches it in half a second. An agent *commits by
+default* — enter sends — and then burns three seconds hallucinating an answer to a
+question you never asked, or politely asks **you** to clarify, as if the garbage
+were your fault. The smarter the agent, the faster it runs off the cliff with your
+input.
+
+So you do the ritual: select-all, delete, `Cmd+Space`, retype the whole paragraph
+you already wrote once. Four, six, ten times a day. Every time, it snaps the thread
+of thought you were holding.
+
+**AGI ends the ritual.** It reverses the layout before the agent ever sees it —
+same keystrokes, right alphabet, understood the first time.
+
+> We solved the alignment problem. The keyboard one.
+
+## Why this happens
+
+Hebrew is a different alphabet on the *same physical keys*. Type English while the
+layout is still Hebrew and every letter lands on its Hebrew neighbor:
 
 ```text
-   what you typed        what you meant
-   ─────────────         ──────────────
-       פודי        ──▶        push
+p → פ     u → ו     s → ד     h → י        →   "push" becomes "פודי"
 ```
 
-It's not a typo and it's not another language — every Hebrew letter sits on the
-**same physical key** as a Latin one (`p→פ  u→ו  s→ד  h→י`). So the fix isn't
-translation, it's a deterministic key remap. AGI does it automatically, so Claude
-just understands you.
-
-```bash
-$ echo "עןא פודי" | node scripts/agi.mjs
-git push
-```
-
-## Table of contents
-
-- [Install](#install)
-- [How it works](#how-it-works)
-- [CLI usage](#cli-usage)
-- [Adding another layout](#adding-another-layout)
-- [FAQ](#faq)
-- [License](#license)
+It isn't another language and it isn't a typo — it's the *right* word on the
+*wrong* keys. So the fix isn't translation, it's a deterministic remap. No model,
+no guessing, no "AI." (The name is a joke. The other AGI is still a roadmap; this
+one's a single file.)
 
 ## Install
 
-It's a [Claude Code](https://claude.com/claude-code) skill. Drop it into your
-skills directory and Claude picks it up automatically:
+It's a [Claude Code](https://claude.com/claude-code) skill. Drop it in and Claude
+invokes it on its own the moment your message turns to gibberish:
 
 ```bash
 git clone https://github.com/tomershlasky/agi ~/.claude/skills/agi
 ```
 
 Per-project instead of global? Put it under `<your-repo>/.claude/skills/agi`.
+No build, no dependencies, no config. It also runs as a plain CLI in any agent or
+shell that can call `node`.
 
-That's the whole install. No build, no dependencies, no config.
-
-## How it works
-
-- A single dependency-free Node script (`scripts/agi.mjs`) holds the
-  QWERTY ↔ Hebrew physical-key table and remaps each Hebrew character to the
-  English key it sits on.
-- The skill's `description` tells Claude to invoke AGI automatically whenever
-  your message contains garbled Hebrew — nothing to remember, nothing to type.
-- **One direction only: Hebrew → English.** Real English, digits, spaces, and
-  punctuation pass straight through, so running it on normal text is a no-op.
-
-## CLI usage
-
-You can also run it straight from the terminal:
+## Usage
 
 ```bash
-node ~/.claude/skills/agi/scripts/agi.mjs "פודי"        # → push
-node ~/.claude/skills/agi/scripts/agi.mjs "עןא פודי"    # → git push
-echo "פודי" | node ~/.claude/skills/agi/scripts/agi.mjs  # reads stdin
+node scripts/agi.mjs "פודי"                     # → push
+node scripts/agi.mjs "עןא פודי"                  # → git push
+node scripts/agi.mjs "עןא פודי איק כןרדא םמק"     # → git push the first one
+echo "פודי" | node scripts/agi.mjs               # reads stdin
 ```
 
-## Adding another layout
+> [!NOTE]
+> One direction only: **Hebrew layout → English.** Real English passes straight
+> through untouched, and genuine Hebrew is left alone — it's a real word, not a
+> mistyped English one. AGI un-scrambles; it doesn't translate.
 
-The mapping lives in exactly one place — the `EN_TO_HE` table in
-`scripts/agi.mjs` — and the Hebrew→English inverse is derived from it
-automatically. To support another source layout (Russian ЙЦУКЕН, Arabic, Greek…),
-add a sibling table and invert it the same way. **PRs welcome.**
+<details>
+<summary><b>How it works</b></summary>
 
-## FAQ
+<br>
 
-**Is this real AGI?**
-Yes — *the* real AGI. Agent Gibberish Intelligence: shipped, working, sitting in
-your terminal right now. Artificial General Intelligence is still loading.
+A single dependency-free Node script holds the QWERTY ↔ Hebrew physical-key table
+and remaps each Hebrew character back to the English key it sits on. The mapping
+lives in exactly one place — the `EN_TO_HE` table in `scripts/agi.mjs` — and the
+Hebrew→English inverse is derived from it automatically.
 
-**Does it touch my normal English?**
-Never. English in, same English out.
+Want another source layout (Russian ЙЦУКЕН, Arabic, Greek…)? Add a sibling table
+and invert it the same way. **PRs welcome.**
+
+</details>
 
 ## License
 
 [MIT](LICENSE) © Tomer Shlasky
+
+<div align="center"><sub>Real AGI. Ships today. Works in Hebrew.</sub></div>
