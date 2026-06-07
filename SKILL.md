@@ -8,7 +8,7 @@ allowed-tools:
   - Bash(node *agi.mjs*)
 ---
 
-# AGI — Agent Gibberish Intelligence
+# AGI — Agent Gibberish Interceptor
 
 Fixes text that was typed with the OS still set to the Hebrew keyboard layout
 when English was meant. Each Hebrew character sits on the same physical key as a

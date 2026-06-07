@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// AGI — Agent Gibberish Intelligence.
+// AGI — Agent Gibberish Interceptor.
 // Converts text typed on a Hebrew keyboard layout back to the English it was meant
 // to be. Deterministic physical-key remapping (NOT translation). Zero dependencies.
 // One direction only: Hebrew -> English. English (and anything not on the Hebrew

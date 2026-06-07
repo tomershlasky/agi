@@ -2,7 +2,7 @@
 
 # AGI
 
-**Agent Gibberish Intelligence**
+**Agent Gibberish Interceptor**
 
 *The one that actually shipped.*
 
