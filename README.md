@@ -50,20 +50,6 @@ same keystrokes, right alphabet, understood the first time.
 
 > We solved the alignment problem. The keyboard one.
 
-## Why this happens
-
-Hebrew is a different alphabet on the *same physical keys*. Type English while the
-layout is still Hebrew and every letter lands on its Hebrew neighbor:
-
-```text
-p → פ     u → ו     s → ד     h → י        →   "push" becomes "פודי"
-```
-
-It isn't another language and it isn't a typo — it's the *right* word on the
-*wrong* keys. So the fix isn't translation, it's a deterministic remap. No model,
-no guessing, no "AI." (The name is a joke. The other AGI is still a roadmap; this
-one's a single file.)
-
 ## Install
 
 It's a [Claude Code](https://claude.com/claude-code) skill. Drop it in and Claude
