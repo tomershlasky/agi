@@ -52,16 +52,22 @@ same keystrokes, right alphabet, understood the first time.
 
 ## Install
 
-It's a [Claude Code](https://claude.com/claude-code) skill. Drop it in and Claude
-invokes it on its own the moment your message turns to gibberish:
+Clone it anywhere — no build, no dependencies, no config:
+
+```bash
+git clone https://github.com/tomershlasky/agi
+```
+
+Then point your coding agent at it (see [Works with any agent](#works-with-any-agent))
+or use it as a plain CLI: `node scripts/agi.mjs "<text>"`.
+
+**[Claude Code](https://claude.com/claude-code) users:** clone straight into your
+skills dir and it's auto-discovered — Claude invokes it the moment a message turns
+to gibberish:
 
 ```bash
 git clone https://github.com/tomershlasky/agi ~/.claude/skills/agi
 ```
-
-Per-project instead of global? Put it under `<your-repo>/.claude/skills/agi`.
-No build, no dependencies, no config. It also runs as a plain CLI in any agent or
-shell that can call `node`.
 
 ## Usage
 
