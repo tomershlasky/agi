@@ -77,6 +77,22 @@ echo "פודי" | node scripts/agi.mjs               # reads stdin
 > through untouched, and genuine Hebrew is left alone — it's a real word, not a
 > mistyped English one. AGI un-scrambles; it doesn't translate.
 
+## Works with any agent
+
+The engine is just a Node script, so any agent that can run a shell command can use
+it. This repo ships the wiring for the common ones — each just tells the agent:
+*when you see garbled Hebrew, run `agi.mjs` and use the output.*
+
+| Agent | Reads |
+| --- | --- |
+| Claude Code | `SKILL.md` (auto-discovered in `~/.claude/skills/`) |
+| OpenAI Codex & other `AGENTS.md` agents | `AGENTS.md` |
+| Cursor | `.cursor/rules/agi.mdc` |
+| Gemini CLI | `GEMINI.md` |
+
+Same one-file engine underneath. Bringing your own agent? Point it at
+`node scripts/agi.mjs "<text>"`.
+
 <details>
 <summary><b>How it works</b></summary>
 
@@ -94,6 +110,6 @@ and invert it the same way. **PRs welcome.**
 
 ## License
 
-[MIT](LICENSE) © Tomer Shlasky
+[MIT](LICENSE)
 
 <div align="center"><sub>Real AGI. Ships today. Works in Hebrew.</sub></div>

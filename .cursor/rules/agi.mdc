@@ -1,0 +1,15 @@
+---
+description: Un-scramble Hebrew-keyboard-layout gibberish (AGI) before acting on a user message
+alwaysApply: true
+---
+
+When a user message contains garbled Hebrew characters that don't form real Hebrew
+words — English typed while the keyboard was still on a Hebrew layout (e.g. `פודי`
+= `push`, `עןא פודי` = `git push`) — recover the intended text before responding:
+
+```bash
+node ~/.claude/skills/agi/scripts/agi.mjs "<the garbled text>"
+```
+
+Use the output as the user's actual message. It's a deterministic key remap — real
+English and genuine Hebrew are left unchanged, so it's a no-op on normal input.
