@@ -58,12 +58,11 @@ Clone it anywhere — no build, no dependencies, no config:
 git clone https://github.com/tomershlasky/agi
 ```
 
-Then point your coding agent at it (see [Works with any agent](#works-with-any-agent))
+Then point your coding agent at it (see Works with any agent below)
 or use it as a plain CLI: `node scripts/agi.mjs "<text>"`.
 
-**[Claude Code](https://claude.com/claude-code) users:** clone straight into your
-skills dir and it's auto-discovered — Claude invokes it the moment a message turns
-to gibberish:
+**Claude Code users:** clone straight into your skills dir and it's auto-discovered
+— Claude invokes it the moment a message turns to gibberish:
 
 ```bash
 git clone https://github.com/tomershlasky/agi ~/.claude/skills/agi
@@ -77,11 +76,6 @@ node scripts/agi.mjs "עןא פודי"                  # → git push
 node scripts/agi.mjs "עןא פודי איק כןרדא םמק"     # → git push the first one
 echo "פודי" | node scripts/agi.mjs               # reads stdin
 ```
-
-> [!NOTE]
-> One direction only: **Hebrew layout → English.** Real English passes straight
-> through untouched, and genuine Hebrew is left alone — it's a real word, not a
-> mistyped English one. AGI un-scrambles; it doesn't translate.
 
 ## Works with any agent
 
