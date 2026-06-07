@@ -14,6 +14,16 @@
 
 ---
 
+<div align="center">
+  <a href="https://github.com/tomershlasky/agi/releases/download/video-1/meet-agi.mp4">
+    <img src="media/poster.jpg" alt="Meet AGI — watch the launch video" width="760">
+  </a>
+  <br>
+  <sub>▶ <a href="https://github.com/tomershlasky/agi/releases/download/video-1/meet-agi.mp4">Watch the 30-second launch video</a></sub>
+</div>
+
+---
+
 ```text
 you typed:    עןא פודי איק כןרדא םמק
 your agent:   …sorry, I'm not sure what you mean. Could you rephrase?
