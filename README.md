@@ -34,12 +34,10 @@ You meant `git push the first one`. Your keyboard was still in Hebrew. So your
 coding agent got `עןא פודי איק כןרדא םמק` — not a typo, a full wall of nonsense —
 and did what agents do: took you seriously, tried anyway, confidently, wrongly.
 
-That's the uniquely modern version of this papercut. A search box just sits there
-looking broken and your eye catches it in half a second. An agent *commits by
-default* — enter sends — and then burns three seconds hallucinating an answer to a
-question you never asked, or politely asks **you** to clarify, as if the garbage
-were your fault. The smarter the agent, the faster it runs off the cliff with your
-input.
+That's the modern twist: a search box looks broken and you catch it instantly — but
+an agent *commits by default* (enter sends), so it confidently runs off a cliff with
+your garbage input, then asks **you** to clarify. The smarter the agent, the faster
+it gets there.
 
 So you do the ritual: select-all, delete, `Cmd+Space`, retype the whole paragraph
 you already wrote once. Four, six, ten times a day. Every time, it snaps the thread
@@ -47,8 +45,6 @@ of thought you were holding.
 
 **AGI ends the ritual.** It reverses the layout before the agent ever sees it —
 same keystrokes, right alphabet, understood the first time.
-
-> We solved the alignment problem. The keyboard one.
 
 ## Install
 
